@@ -16,15 +16,15 @@ router.get('/', async function (req, res, next) {
   /* 3. Uso del método findAll */
   let usersCollection = await models.users.findAll({
     /* 3.1. Including everything */
-   include: { all: true, nested: true },
-   /* 3.2. Raw Queries */
-   raw: true,
-   nest: true,
+    include: { all: true, nested: true },
+    /* 3.2. Raw Queries */
+    raw: true,
+    nest: true,
   })
   let rolesCollection = await models.roles.findAll({})
-   
+
   /* 4. Paso de parámetros a la vista */
-  res.render('crud', { title: 'CRUD with users', usersArray: usersCollection, rolesArray: rolesCollection });
+  res.render('crud', { username: req.cookies['username'], title: 'CRUD with users', usersArray: usersCollection, rolesArray: rolesCollection });
 
 });
 
