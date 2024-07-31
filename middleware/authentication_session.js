@@ -1,9 +1,9 @@
-/* Autenticación */
+ /* Autenticación */
 
-var authenticateSession = (req, res, next) => {
-    if (process.env.ALL_GRANTED.includes(req.session.role)) {
+ var authenticateSession = (req, res, next) => {
+    if(req.session.loggedin) {
         return next()
-    } else {
+    } else{
         return res.redirect("/")
     }
 }
